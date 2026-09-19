@@ -2,22 +2,19 @@
 
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ContadorController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LecturaController;
 use App\Http\Controllers\PagoController;
 use App\Http\Controllers\TarifaController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return redirect('/login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'role:Administrador,Secretaria,Empleado'])->name('dashboard');
-
-// TODO: reemplazar por esto cuando exista DashboardController:
-// Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'role:Administrador,Secretaria,Empleado'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'role:Administrador,Secretaria,Empleado'])
+    ->name('dashboard');
 
 Route::get('/bienvenida', function () {
     $role = auth()->user()->role->nombre_rol;
@@ -42,14 +39,7 @@ Route::middleware(['auth', 'role:Administrador,Secretaria,Empleado'])->group(fun
 });
 
 Route::middleware(['auth', 'role:Administrador,Secretaria'])->group(function () {
-    Route::resource('pagos', PagoController::class)->only(['create', 'store']);
+    Route::resource('pagos', PagoController::class)->only(['index', 'create', 'store']);
 });
 
 require __DIR__ . '/auth.php';
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-Route::resource('pagos', PagoController::class)
-    ->only(['index', 'create', 'store']);
-
-require __DIR__.'/auth.php';

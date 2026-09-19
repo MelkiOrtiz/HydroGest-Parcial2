@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="light">
 
 <head>
     <meta charset="utf-8" />
@@ -7,7 +7,18 @@
     <title>@yield('title', 'HidroGest')</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/dark-mode.css') }}" rel="stylesheet" />
+    <script>
+        // Aplicar el tema guardado antes de pintar la página para evitar parpadeos.
+        (function () {
+            try {
+                var theme = localStorage.getItem('hidrogest-theme');
+                if (theme) document.documentElement.setAttribute('data-bs-theme', theme);
+            } catch (e) {}
+        })();
+    </script>
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/theme.js') }}" defer></script>
     @stack('styles')
 </head>
 

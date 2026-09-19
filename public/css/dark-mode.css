@@ -1,0 +1,132 @@
+@charset "UTF-8";
+/*!
+* HidroGest - Modo oscuro
+* El modo oscuro se activa con el atributo data-bs-theme="dark" en <html>.
+*/
+
+html[data-bs-theme="dark"] {
+  --bs-body-bg: #212529;
+  --bs-body-color: #d7dde3;
+  --bs-body-color-rgb: 215, 221, 227;
+  --bs-secondary-color: #adb5bd;
+  --bs-tertiary-color: #6c757d;
+  --bs-border-color: #495057;
+  --bs-border-color-translucent: rgba(255, 255, 255, 0.12);
+  --bs-link-color: #6ea8fe;
+  --bs-link-hover-color: #8bb9fe;
+  --bs-light: #343a40;
+  --bs-light-rgb: 52, 58, 64;
+  --bs-code-color: #e685b5;
+}
+
+html[data-bs-theme="dark"] body {
+  color: var(--bs-body-color);
+  background-color: var(--bs-body-bg);
+}
+
+/* Tarjetas */
+html[data-bs-theme="dark"] .card,
+html[data-bs-theme="dark"] .bg-white {
+  --bs-card-bg: #2b3035;
+  --bs-card-cap-bg: #343a40;
+  --bs-card-color: #d7dde3;
+  --bs-card-border-color: #495057;
+}
+
+html[data-bs-theme="dark"] .bg-white {
+  background-color: #2b3035 !important;
+}
+
+/* Tablas */
+html[data-bs-theme="dark"] .table {
+  --bs-table-color: #d7dde3;
+  --bs-table-bg: transparent;
+  --bs-table-border-color: #495057;
+  --bs-table-striped-bg: rgba(255, 255, 255, 0.05);
+  --bs-table-hover-bg: rgba(255, 255, 255, 0.08);
+  --bs-table-hover-color: #e9ecef;
+}
+
+html[data-bs-theme="dark"] .table-light {
+  --bs-table-color: #e9ecef;
+  --bs-table-bg: #343a40;
+  --bs-table-border-color: #495057;
+}
+
+/* Dropdowns */
+html[data-bs-theme="dark"] .dropdown-menu {
+  --bs-dropdown-color: #d7dde3;
+  --bs-dropdown-bg: #2b3035;
+  --bs-dropdown-border-color: #495057;
+  --bs-dropdown-divider-bg: #495057;
+  --bs-dropdown-link-color: #d7dde3;
+  --bs-dropdown-link-hover-color: #fff;
+  --bs-dropdown-link-hover-bg: rgba(255, 255, 255, 0.15);
+  --bs-dropdown-link-active-color: #fff;
+  --bs-dropdown-link-active-bg: #0d6efd;
+}
+
+html[data-bs-theme="dark"] .dropdown-item {
+  color: var(--bs-dropdown-link-color);
+}
+
+html[data-bs-theme="dark"] .dropdown-item:hover,
+html[data-bs-theme="dark"] .dropdown-item:focus {
+  color: var(--bs-dropdown-link-hover-color);
+  background-color: var(--bs-dropdown-link-hover-bg);
+}
+
+/* Formularios */
+html[data-bs-theme="dark"] .form-control,
+html[data-bs-theme="dark"] .form-select {
+  color: #d7dde3;
+  background-color: #212529;
+  border-color: #495057;
+}
+
+html[data-bs-theme="dark"] .form-control::placeholder {
+  color: #adb5bd;
+}
+
+html[data-bs-theme="dark"] .form-control:focus,
+html[data-bs-theme="dark"] .form-select:focus {
+  color: #d7dde3;
+  background-color: #212529;
+  border-color: #6ea8fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+html[data-bs-theme="dark"] .input-group-text {
+  color: #d7dde3;
+  background-color: #343a40;
+  border-color: #495057;
+}
+
+/* Texto auxiliar */
+html[data-bs-theme="dark"] .text-muted {
+  color: #adb5bd !important;
+}
+
+html[data-bs-theme="dark"] .breadcrumb-item.active {
+  color: #adb5bd;
+}
+
+/* simple-datatables (busqueda dentro de dataTable) */
+html[data-bs-theme="dark"] .datatable-input {
+  color: #d7dde3;
+  background-color: #212529;
+  border-color: #495057;
+}
+
+html[data-bs-theme="dark"] .dataTable-table {
+  --bs-table-color: #d7dde3;
+}
+
+/* SB Admin: contraste para topbar y sidebar sobre fondo oscuro */
+html[data-bs-theme="dark"] .sb-topnav.navbar-dark {
+  background-color: #2b3035;
+}
+
+html[data-bs-theme="dark"] .sb-sidenav-dark {
+  background-color: #2b3035;
+}
