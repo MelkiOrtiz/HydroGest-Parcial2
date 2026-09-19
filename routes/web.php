@@ -22,6 +22,7 @@ Route::get('/bienvenida', function () {
 })->middleware('auth')->name('bienvenida');
 
 Route::middleware(['auth', 'role:Administrador,Secretaria'])->group(function () {
+    Route::get('clientes/exportar', [ClienteController::class, 'exportar'])->name('clientes.exportar');
     Route::resource('clientes', ClienteController::class);
 });
 

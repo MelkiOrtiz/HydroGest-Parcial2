@@ -13,6 +13,45 @@ class ClienteController extends Controller
         return view('clientes.index', compact('clientes'));
     }
 
+    public function exportar()
+    {
+        $clientes = Cliente::orderBy('apellido1_cliente')->get();
+
+        $csv = function () use ($clientes) {
+            $handle = fopen('php://output', 'w');
+            fwrite($handle, "\xEF\xBB\xBF");
+
+            fputcsv($handle, [
+                'DPI',
+                'Nombre completo',
+                'Telefono',
+                'Direccion',
+                'Numero de cuenta',
+                'Estado',
+            ]);
+
+            foreach ($clientes as $cliente) {
+                fputcsv($handle, [
+                    $cliente->dpi_cliente,
+                    $cliente->nombre_completo,
+                    $cliente->telefono_cliente,
+                    $cliente->direccion_cliente,
+                    $cliente->numero_cuenta_cliente,
+                    $cliente->activo_cliente === 'ACTIVO' ? 'Activo' : 'No activo',
+                ]);
+            }
+
+            fclose($handle);
+        };
+
+        $nombreArchivo = 'clientes_' . now()->format('Ymd_His') . '.csv';
+
+        return response()->streamDownload($csv, $nombreArchivo, [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+            'X-Content-Type-Options' => 'nosniff',
+        ]);
+    }
+
     public function create()
     {
         return view('clientes.create');
